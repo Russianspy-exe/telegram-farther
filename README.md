@@ -1,12 +1,3 @@
-
-<h2 align="center">⚠️ This repository is no longer maintained ⚠️</h2>
-
-<p align="center">
-Some features might not work, you don't need to report it, I don't do any more development anyway.
-</p>
-
-#
-
 <h1 align="center">:snake: Telegram-RAT</h1>
 
 <p align="center">
